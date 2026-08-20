@@ -172,3 +172,17 @@ heroImageInput?.addEventListener("change", (event) => {
   heroImage.src = URL.createObjectURL(file);
   heroImage.classList.add("visible");
 });
+
+function updateTimeSky() {
+  const hour = new Date().getHours();
+  let timeOfDay = "day";
+
+  if (hour >= 5 && hour < 8) timeOfDay = "dawn";
+  if (hour >= 17 && hour < 20) timeOfDay = "sunset";
+  if (hour >= 20 || hour < 5) timeOfDay = "night";
+
+  document.body.dataset.time = timeOfDay;
+}
+
+updateTimeSky();
+setInterval(updateTimeSky, 15 * 60 * 1000);

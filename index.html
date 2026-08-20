@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="time-sky" aria-hidden="true">
+      <span class="time-sky-sun"></span>
+      <span class="time-sky-stars"></span>
+    </div>
     <div class="page-shell">
       <header class="topbar">
         <div class="brand-wrap">
@@ -29,16 +33,42 @@
         <nav class="main-nav" aria-label="Main navigation">
           <a href="#home">Home</a>
         </nav>
+        <p class="reader-status">Reader view</p>
       </header>
 
       <main id="home">
         <section class="hero">
           <div class="hero-copy">
-            <div class="page-text-box">
-              <span class="scroll-roll scroll-roll-top" aria-hidden="true"></span>
-              <span class="page-text-kicker">a quiet page</span>
-              <textarea aria-label="Write on your page" placeholder="Begin writing here..."></textarea>
-              <span class="scroll-roll scroll-roll-bottom" aria-hidden="true"></span>
+            <div class="writing-layout">
+              <div class="page-text-box">
+                <span class="frame-character frame-character-left" aria-hidden="true">
+                  <span class="frame-character-face"></span>
+                </span>
+                <span class="frame-character frame-character-right" aria-hidden="true">
+                  <span class="frame-character-face"></span>
+                </span>
+                <span class="scroll-flare scroll-flare-top" aria-hidden="true"></span>
+                <span class="scroll-roll scroll-roll-top" aria-hidden="true"></span>
+                <span class="page-text-kicker">a quiet page</span>
+                <textarea aria-label="Write on your page" placeholder="Begin writing here..." readonly data-owner-only></textarea>
+                <span class="scroll-roll scroll-roll-bottom" aria-hidden="true"></span>
+                <span class="scroll-flare scroll-flare-bottom" aria-hidden="true"></span>
+              </div>
+
+              <aside class="side-writing-boxes" aria-label="Small writing prompts">
+                <label class="mini-text-box mini-text-box-rose">
+                  <span>little sparks</span>
+                  <textarea aria-label="Little sparks" placeholder="A thought to keep..." readonly data-owner-only></textarea>
+                </label>
+                <label class="mini-text-box mini-text-box-mint">
+                  <span>today's feeling</span>
+                  <textarea aria-label="Today's feeling" placeholder="Name the weather inside..." readonly data-owner-only></textarea>
+                </label>
+                <label class="mini-text-box mini-text-box-gold">
+                  <span>next small thing</span>
+                  <textarea aria-label="Next small thing" placeholder="One gentle step..." readonly data-owner-only></textarea>
+                </label>
+              </aside>
             </div>
           </div>
 
@@ -47,7 +77,7 @@
               <label class="image-slot">
                 <span class="image-slot-icon">+</span>
                 <span>Add your picture</span>
-                <input id="heroImageInput" type="file" accept="image/*" />
+                <input id="heroImageInput" type="file" accept="image/*" disabled data-owner-only />
               </label>
               <img id="heroImage" class="uploaded-image" alt="" />
               <div class="moon-glow"></div>
