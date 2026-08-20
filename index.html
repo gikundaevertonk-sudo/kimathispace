@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kimathi Space</title>
+    <meta
+      name="description"
+      content="A cute personal blog space for thoughtful articles, journaling, and reflections."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&family=Quicksand:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">✦</div>
+          <div>
+            <p class="brand-name">kimathi space</p>
+          </div>
+        </div>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+        </nav>
+      </header>
+
+      <main id="home">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="page-text-box">
+              <span class="scroll-roll scroll-roll-top" aria-hidden="true"></span>
+              <span class="page-text-kicker">a quiet page</span>
+              <textarea aria-label="Write on your page" placeholder="Begin writing here..."></textarea>
+              <span class="scroll-roll scroll-roll-bottom" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Your featured image">
+            <div class="storybook-scene">
+              <label class="image-slot">
+                <span class="image-slot-icon">+</span>
+                <span>Add your picture</span>
+                <input id="heroImageInput" type="file" accept="image/*" />
+              </label>
+              <img id="heroImage" class="uploaded-image" alt="" />
+              <div class="moon-glow"></div>
+              <div class="cloud cloud-one"></div>
+              <div class="cloud cloud-two"></div>
+
+              <svg class="forest-cartoon" viewBox="0 0 600 500" aria-hidden="true">
+                <defs>
+                  <linearGradient id="skyFade" x1="0%" x2="0%" y1="0%" y2="100%">
+                    <stop offset="0%" stop-color="#fef7dc" />
+                    <stop offset="100%" stop-color="#dfeef8" />
+                  </linearGradient>
+                </defs>
+
+                <rect x="0" y="0" width="600" height="500" fill="url(#skyFade)" />
+                <circle cx="460" cy="90" r="48" fill="#f7e7b7" opacity="0.9" />
+                <circle cx="470" cy="86" r="58" fill="#f7e7b7" opacity="0.18" />
+
+                <g opacity="0.85">
+                  <path d="M80 150C120 110 150 108 188 145C145 149 119 164 80 150Z" fill="#ffffff"/>
+                  <path d="M270 165C310 120 350 120 392 170C347 176 326 186 270 165Z" fill="#ffffff"/>
+                  <path d="M390 152C430 114 468 116 510 156C474 162 448 175 390 152Z" fill="#ffffff"/>
+                </g>
+
+                <g>
+                  <path d="M96 350L120 270L146 350Z" fill="#7eb08a" stroke="#3b2d24" stroke-width="4"/>
+                  <path d="M120 220L90 280L150 280Z" fill="#88bf96" stroke="#3b2d24" stroke-width="4"/>
+                  <path d="M128 350L154 260L175 350Z" fill="#6da57f" stroke="#3b2d24" stroke-width="4"/>
+                  <path d="M178 350L205 250L236 350Z" fill="#7db382" stroke="#3b2d24" stroke-width="4"/>
+                  <path d="M230 350L256 260L280 350Z" fill="#8dbb97" stroke="#3b2d24" stroke-width="4"/>
+                  <path d="M345 350L372 228L400 350Z" fill="#7ca177" stroke="#3b2d24" stroke-width="4"/>
+                  <path d="M395 350L425 246L452 350Z" fill="#8db78d" stroke="#3b2d24" stroke-width="4"/>
+                  <path d="M450 350L482 258L510 350Z" fill="#6b9d74" stroke="#3b2d24" stroke-width="4"/>
+                </g>
+
+                <g>
+                  <ellipse cx="310" cy="230" rx="90" ry="52" fill="#d9a46d" stroke="#3b2d24" stroke-width="4"/>
+                  <ellipse cx="295" cy="214" rx="18" ry="20" fill="#f3d2a8"/>
+                  <ellipse cx="331" cy="214" rx="18" ry="20" fill="#f3d2a8"/>
+                  <circle cx="298" cy="210" r="5" fill="#3b2d24"/>
+                  <circle cx="327" cy="210" r="5" fill="#3b2d24"/>
+                  <path d="M295 240C305 248 324 248 336 238" fill="none" stroke="#3b2d24" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M312 276L365 330" stroke="#3b2d24" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M315 278L270 330" stroke="#3b2d24" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M260 235L220 270" stroke="#3b2d24" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M362 235L402 268" stroke="#3b2d24" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M250 182C234 166 215 162 198 174" fill="none" stroke="#3b2d24" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M374 182C389 166 409 163 424 171" fill="none" stroke="#3b2d24" stroke-width="6" stroke-linecap="round"/>
+                </g>
+
+                <g>
+                  <ellipse cx="130" cy="330" rx="34" ry="22" fill="#d7c7ed" stroke="#3b2d24" stroke-width="4"/>
+                  <circle cx="120" cy="320" r="12" fill="#d9a46d" stroke="#3b2d24" stroke-width="4"/>
+                  <circle cx="144" cy="318" r="12" fill="#d9a46d" stroke="#3b2d24" stroke-width="4"/>
+                  <circle cx="130" cy="332" r="10" fill="#e9d5f5"/>
+                  <path d="M124 338C128 345 136 345 142 338" fill="none" stroke="#3b2d24" stroke-width="4" stroke-linecap="round"/>
+                </g>
+
+                <g fill="#f8d0a8" stroke="#3b2d24" stroke-width="3">
+                  <circle cx="196" cy="380" r="14"/>
+                  <circle cx="225" cy="376" r="11"/>
+                  <circle cx="500" cy="378" r="12"/>
+                  <circle cx="530" cy="386" r="9"/>
+                </g>
+              </svg>
+
+              <div class="floating-badge badge-one" aria-label="Add bubble text"></div>
+              <div class="floating-badge badge-two" aria-label="Add bubble text"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="articles" class="article-section">
+          <div class="section-head">
+            <!-- Add your article heading here. -->
+          </div>
+
+          <div id="articleGrid" class="article-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="notes" class="note-section is-empty">
+          <div class="section-head compact">
+            <!-- Add your notes heading here. -->
+          </div>
+
+          <div class="note-grid">
+            <!-- Add note cards here. -->
+          </div>
+        </section>
+
+        <section id="about" class="about-section is-empty">
+          <div class="about-card">
+            <div class="about-photo">
+              <div class="portrait-blob"></div>
+            </div>
+
+            <div class="about-copy">
+              <!-- Add your photo, bio, and contact link here. -->
+            </div>
+          </div>
+        </section>
+      </main>
+
+    </div>
+
+    <div id="mf-particles" aria-hidden="true"></div>
+    <div id="mf-top-clouds" aria-hidden="true"></div>
+    <div id="mf-bottom-scene" aria-hidden="true"></div>
+
+    <div id="articleModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
+      <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="close-btn" type="button" aria-label="Close article">×</button>
+        <div class="modal-header">
+          <span id="modalCategory" class="modal-category"></span>
+          <p id="modalMeta" class="modal-meta"></p>
+        </div>
+        <h3 id="modalTitle"></h3>
+        <div id="modalBody" class="modal-body"></div>
+      </article>
+    </div>
+
+    <div id="wf-mascot-bubble" role="status" aria-live="polite">Hi! Click me</div>
+    <div id="wf-mascot-container" role="button" tabindex="0" aria-label="Say hello to the forest fawn"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+    <script src="mascot.js"></script>
+  </body>
+</html>
