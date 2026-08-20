@@ -82,6 +82,7 @@ const ownerMessage = document.getElementById("ownerMessage");
 const publishButton = document.getElementById("publishButton");
 const ownerLogoutButton = document.getElementById("ownerLogoutButton");
 const ownerFields = document.querySelectorAll("[data-owner-only]");
+const heroImageAction = document.getElementById("heroImageAction");
 const mainTextField = document.querySelector('.page-text-box textarea');
 const littleSparksField = document.querySelector('.mini-text-box-rose textarea');
 const todaysFeelingField = document.querySelector('.mini-text-box-mint textarea');
@@ -164,6 +165,8 @@ function setOwnerMode(isOwner) {
   });
   ownerLoginForm.classList.toggle("hidden", isOwner);
   ownerEditor.classList.toggle("hidden", !isOwner);
+  document.body.classList.toggle("owner-mode", isOwner);
+  heroImageAction.textContent = isOwner ? "Add your picture" : "Reader view";
   document.querySelector(".reader-status").textContent = isOwner ? "Owner mode" : "Reader view";
   ownerMessage.textContent = isOwner ? "Your page is unlocked." : "";
 }

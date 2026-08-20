@@ -1014,6 +1014,20 @@ section {
   opacity: 0;
 }
 
+.image-slot {
+  pointer-events: none;
+  cursor: default;
+}
+
+body.owner-mode .image-slot {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+body:not(.owner-mode) .image-slot-icon {
+  display: none;
+}
+
 .uploaded-image {
   position: absolute;
   inset: 0;
