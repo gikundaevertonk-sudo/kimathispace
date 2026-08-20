@@ -60,7 +60,8 @@ function hasValidSession(request) {
   if (!token) return false;
 
   const [payload, signature] = token.split(".");
-  if (!payload || !signature || !crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(sign(payload)))) {
+  const expectedSignature = payload ? sign(payload) : "";
+  if (!payload || !signature || signature.length !== expectedSignature.length || !crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature))) {
     return false;
   }
 
