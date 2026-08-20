@@ -34,7 +34,27 @@
           <a href="#home">Home</a>
         </nav>
         <p class="reader-status">Reader view</p>
+        <button id="ownerLoginButton" class="owner-login" type="button">Owner login</button>
       </header>
+
+      <section id="ownerPanel" class="owner-panel hidden" aria-label="Owner publishing controls">
+        <form id="ownerLoginForm" class="owner-login-form">
+          <label for="ownerPassword">Owner password</label>
+          <input id="ownerPassword" type="password" autocomplete="current-password" required />
+          <button class="primary-btn" type="submit">Unlock writing</button>
+          <p id="ownerMessage" class="owner-message" role="status"></p>
+        </form>
+        <div id="ownerEditor" class="owner-editor hidden">
+          <div>
+            <strong>Owner mode</strong>
+            <p>Edit the page, choose an image, then publish it for readers.</p>
+          </div>
+          <div class="owner-editor-actions">
+            <button id="publishButton" class="primary-btn" type="button">Publish changes</button>
+            <button id="ownerLogoutButton" class="secondary-btn" type="button">Lock page</button>
+          </div>
+        </div>
+      </section>
 
       <main id="home">
         <section class="hero">

@@ -73,6 +73,19 @@ const modalMeta = document.getElementById("modalMeta");
 const modalTitle = document.getElementById("modalTitle");
 const modalBody = document.getElementById("modalBody");
 const closeButton = document.querySelector(".close-btn");
+const ownerPanel = document.getElementById("ownerPanel");
+const ownerLoginButton = document.getElementById("ownerLoginButton");
+const ownerLoginForm = document.getElementById("ownerLoginForm");
+const ownerPassword = document.getElementById("ownerPassword");
+const ownerEditor = document.getElementById("ownerEditor");
+const ownerMessage = document.getElementById("ownerMessage");
+const publishButton = document.getElementById("publishButton");
+const ownerLogoutButton = document.getElementById("ownerLogoutButton");
+const ownerFields = document.querySelectorAll("[data-owner-only]");
+const mainTextField = document.querySelector('.page-text-box textarea');
+const littleSparksField = document.querySelector('.mini-text-box-rose textarea');
+const todaysFeelingField = document.querySelector('.mini-text-box-mint textarea');
+const nextSmallThingField = document.querySelector('.mini-text-box-gold textarea');
 
 function renderArticles(filter = "all") {
   const visibleArticles = [];
@@ -143,6 +156,90 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderArticles();
+
+function setOwnerMode(isOwner) {
+  ownerFields.forEach((field) => {
+    if (field.matches("textarea")) field.readOnly = !isOwner;
+    if (field.matches("input")) field.disabled = !isOwner;
+  });
+  ownerLoginForm.classList.toggle("hidden", isOwner);
+  ownerEditor.classList.toggle("hidden", !isOwner);
+  document.querySelector(".reader-status").textContent = isOwner ? "Owner mode" : "Reader view";
+  ownerMessage.textContent = isOwner ? "Your page is unlocked." : "";
+}
+
+async function loadPublishedContent() {
+  const response = await fetch("/api/content");
+  if (!response.ok) throw new Error("Could not load published content");
+  const content = await response.json();
+  mainTextField.value = content.mainText || "";
+  littleSparksField.value = content.littleSparks || "";
+  todaysFeelingField.value = content.todaysFeeling || "";
+  nextSmallThingField.value = content.nextSmallThing || "";
+  if (content.heroImage) {
+    heroImage.src = content.heroImage;
+    heroImage.classList.add("visible");
+  }
+}
+
+ownerLoginButton.addEventListener("click", () => {
+  ownerPanel.classList.toggle("hidden");
+  if (!ownerPanel.classList.contains("hidden") && !ownerEditor.classList.contains("hidden")) {
+    mainTextField.focus();
+  } else if (!ownerPanel.classList.contains("hidden")) {
+    ownerPassword.focus();
+  }
+});
+
+ownerLoginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  ownerMessage.textContent = "Unlocking...";
+  const response = await fetch("/api/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ password: ownerPassword.value })
+  });
+
+  if (!response.ok) {
+    ownerMessage.textContent = (await response.json()).error || "Login failed";
+    return;
+  }
+
+  ownerPassword.value = "";
+  setOwnerMode(true);
+});
+
+publishButton.addEventListener("click", async () => {
+  publishButton.disabled = true;
+  publishButton.textContent = "Publishing...";
+  const formData = new FormData();
+  formData.append("mainText", mainTextField.value);
+  formData.append("littleSparks", littleSparksField.value);
+  formData.append("todaysFeeling", todaysFeelingField.value);
+  formData.append("nextSmallThing", nextSmallThingField.value);
+  if (heroImageInput.files[0]) formData.append("heroImage", heroImageInput.files[0]);
+
+  const response = await fetch("/api/content", { method: "POST", body: formData });
+  ownerMessage.textContent = response.ok ? "Published for readers." : "Publishing failed.";
+  publishButton.disabled = false;
+  publishButton.textContent = "Publish changes";
+  if (response.ok) await loadPublishedContent();
+});
+
+ownerLogoutButton.addEventListener("click", async () => {
+  await fetch("/api/logout", { method: "POST" });
+  setOwnerMode(false);
+  ownerPanel.classList.add("hidden");
+});
+
+loadPublishedContent().catch(() => {
+  ownerMessage.textContent = "Start the backend to load published content.";
+});
+
+fetch("/api/session")
+  .then((response) => response.json())
+  .then(({ owner }) => setOwnerMode(owner))
+  .catch(() => setOwnerMode(false));
 
 const interactionTargets = document.querySelectorAll(
   ".nav-cta, .primary-btn, .secondary-btn, .newsletter-form button, .filter-btn"
