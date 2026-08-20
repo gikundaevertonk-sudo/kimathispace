@@ -14,7 +14,7 @@ A small owner-published personal blog page.
 3. Set the owner password for the current PowerShell session:
 
    ```powershell
-   $env:OWNER_PASSWORD = "use-a-long-private-password"
+   $env:OWNER_PASSWORD = "kimathi254"
    $env:SESSION_SECRET = "use-a-long-random-secret"
    ```
 

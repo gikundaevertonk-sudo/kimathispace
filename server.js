@@ -6,16 +6,12 @@ const multer = require("multer");
 
 const app = express();
 const port = Number(process.env.PORT) || 3000;
-const ownerPassword = process.env.OWNER_PASSWORD;
+const ownerPassword = process.env.OWNER_PASSWORD || "kimathi254";
 const sessionSecret = process.env.SESSION_SECRET || crypto.randomBytes(32).toString("hex");
 const rootDir = __dirname;
 const dataDir = path.join(rootDir, "data");
 const uploadDir = path.join(rootDir, "uploads");
 const contentFile = path.join(dataDir, "content.json");
-
-if (!ownerPassword) {
-  console.warn("OWNER_PASSWORD is not set. Login will be unavailable until it is configured.");
-}
 
 fs.mkdirSync(dataDir, { recursive: true });
 fs.mkdirSync(uploadDir, { recursive: true });
